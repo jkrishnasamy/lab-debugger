@@ -39,7 +39,7 @@ class MainActivity : Activity() {
         val divButton = findViewById(R.id.operation_div_btn) as Button
         divButton.setOnClickListener {
             try {
-                compute(Calculator.Operator.MUL)
+                compute(Calculator.Operator.DIV)
             } catch (iae: IllegalArgumentException) {
                 Log.e(TAG, "IllegalArgumentException", iae)
                 mResultTextView!!.text = getString(R.string.computationError)
@@ -67,7 +67,7 @@ class MainActivity : Activity() {
         val result: String
         when (operator) {
             Calculator.Operator.ADD -> result = mCalculator!!.add(operand).toString()
-            Calculator.Operator.SUB -> result = getString(R.string.computationError)
+            Calculator.Operator.SUB -> result = mCalculator!!.mul(operand).toString()
             Calculator.Operator.DIV -> result = mCalculator!!.div(operand).toString()
             Calculator.Operator.MUL -> result = mCalculator!!.mul(operand).toString()
             else -> result = getString(R.string.computationError)
